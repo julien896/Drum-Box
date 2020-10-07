@@ -1,11 +1,24 @@
 import React from 'react';
+import kick from './kick.wav'
+import tom from './presets/Tom.wav'
+import tom2 from './presets/Tom2.wav'
+import redo from './presets/redo.wav'
+import redo2 from './presets/redo2.wav'
+import fng from './presets/fng.wav'
+import hh from './presets/HiHat.wav'
+import cabasa from './presets/CABASA.wav'
+import sy from './presets/HIGHQ_C.wav'
+
+
+
 
 const Pad = () => {
 
     window.addEventListener('keydown', function(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
     if(!audio) return;
-    audio.play()
+    audio.currentTime = 0;
+    audio.play();
     });
 
 
@@ -53,13 +66,14 @@ const Pad = () => {
 
         </div>
 
-    <audio data-key="65" src="presets/kick.wav"></audio>    
-    <audio data-key="83" src="presets/redo.wav"></audio>    
-    <audio data-key="68" src="presets/Tom.wav"></audio>    
-    <audio data-key="70" src="presets/HiHat.wav"></audio>    
-    <audio data-key="71" src="presets/fng.wav"></audio>    
-    <audio data-key="72" src="presets/kick.wav"></audio>    
-    <audio data-key="74" src="presets/kick.wav"></audio>    
+    <audio data-key="65" src={kick}></audio>    
+    <audio data-key="83" src={redo}></audio>    
+    <audio data-key="68" src={hh}></audio>    
+    <audio data-key="70" src={tom2}></audio>    
+    <audio data-key="71" src={fng}></audio>    
+    <audio data-key="72" src={tom}></audio>    
+    <audio data-key="74" src={cabasa}></audio>    
+
 
     </>
 
