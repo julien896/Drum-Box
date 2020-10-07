@@ -9,59 +9,68 @@ import hh from './presets/HiHat.wav'
 import cabasa from './presets/CABASA.wav'
 import sy from './presets/HIGHQ_C.wav'
 
-
-
-
 const Pad = () => {
 
-    window.addEventListener('keydown', function(e) {
+   
+
+function playSound(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
     if(!audio) return;
     audio.currentTime = 0;
     audio.play();
-    });
+    key.classList.add('playing');
+}
 
+function removeTransition(e) {
+if(e.propertyName !== 'transform') return;
+this.classList.remove('playing');
+}
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+window.addEventListener('keydown', playSound);
 
 
     return ( 
         <>
 
-        <div className="keys">
-            <div data-key="65" className="key">
+        <div class="keys">
+            <div data-key="65" class="key">
                 <kbd>A</kbd>
-                <span className="sound">kick</span>
+                <span class="sound">kick</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="83" class="key">
                 <kbd>S</kbd>
-                <span className="sound">snare</span>
+                <span class="sound">snare</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="68" class="key">
                 <kbd>D</kbd>
-                <span className="sound">tom</span>
+                <span class="sound">tom</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="70" class="key">
                 <kbd>F</kbd>
-                <span className="sound">hi-hat</span>
+                <span class="sound">hi-hat</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="71" class="key">
                 <kbd>G</kbd>
-                <span className="sound">cabasa</span>
+                <span class="sound">cabasa</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="72" class="key">
                 <kbd>H</kbd>
-                <span className="sound">ride</span>
+                <span class="sound">ride</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="74" class="key">
                 <kbd>J</kbd>
-                <span className="sound">kick</span>
+                <span class="sound">kick</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="75" class="key">
                 <kbd>K</kbd>
-                <span className="sound">kick</span>
+                <span class="sound">kick</span>
             </div>
-            <div data-key="65" className="key">
+            <div data-key="76" class="key">
                 <kbd>L</kbd>
-                <span className="sound">kick</span>
+                <span class="sound">kick</span>
             </div>
 
         </div>
@@ -73,6 +82,8 @@ const Pad = () => {
     <audio data-key="71" src={fng}></audio>    
     <audio data-key="72" src={tom}></audio>    
     <audio data-key="74" src={cabasa}></audio>    
+    <audio data-key="75" src={sy}></audio>  
+    <audio data-key="76" src={redo2}></audio>  
 
 
     </>
